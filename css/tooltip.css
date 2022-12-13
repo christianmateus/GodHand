@@ -1,0 +1,103 @@
+/* Cores da ferramenta */
+html {
+    --main-color: #1c4e51;
+    --purple: #1c4e51;
+    --lightpurple: #3c6e71;
+    --main-background: #fff;
+    --main-foreground: #ddd;
+    --darken: #444;
+    --dark-yellow: #ECB365;
+
+    /* Dark theme */
+    --darkTheme-main-background: #041C32;
+    --darkTheme-main-foreground: #04293A;
+    --darkTheme-dark-blue: #064663;
+    --darkTheme-dark-yellow: #ECB365;
+}
+
+.white-mode {
+    --darkTheme-main-background: #bbb;
+    --darkTheme-main-foreground: #fff;
+    --darkTheme-dark-blue: #fff;
+    --darkTheme-dark-yellow: #ECB365;
+}
+
+/* TOOLTIP POPUP */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    padding: 2px 6px;
+    font-size: 10pt;
+    border-radius: 10px;
+    margin-left: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--main-color);
+    cursor: default;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #333;
+    color: var(--main-background);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -90px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltiptext-left {
+    visibility: hidden;
+    width: 220px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -110px;
+    right: 110%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip .tooltiptext-left::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+.tooltip:hover .tooltiptext-left {
+    visibility: visible;
+}

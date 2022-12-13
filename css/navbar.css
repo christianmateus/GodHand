@@ -1,0 +1,242 @@
+/* Cores da ferramenta */
+html {
+    --main-color: #1c4e51;
+    --purple: #1c4e51;
+    --lightpurple: #3c6e71;
+    --main-background: #fff;
+    --main-foreground: #ddd;
+    --darken: #444;
+    --dark-yellow: #ECB365;
+
+    /* Dark theme */
+    --darkTheme-main-background: #041C32;
+    --darkTheme-main-foreground: #04293A;
+    --darkTheme-dark-blue: #064663;
+    --darkTheme-dark-yellow: #ECB365;
+}
+
+.white-mode {
+    --darkTheme-main-background: #bbb;
+    --darkTheme-main-foreground: #fff;
+    --darkTheme-dark-blue: #fff;
+    --darkTheme-dark-yellow: #ECB365;
+}
+
+.white-mode .container-fieldset {
+    background-color: #fff;
+}
+
+.white-mode fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.white-mode fieldset:hover {
+    border: 1px solid #3C6E71;
+}
+
+.white-mode fieldset legend {
+    color: #000;
+}
+
+.white-mode fieldset label {
+    color: #333;
+}
+
+/* ===================== 
+    Menu principal
+   ===================== */
+#menu-container {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    height: 25px;
+    position: fixed;
+    top: 0;
+    z-index: 6;
+    -webkit-app-region: drag;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+nav hr {
+    height: 1px;
+    background-color: rgba(140, 140, 140, 0.4);
+    margin: 2px 0;
+}
+
+.dropdown {
+    display: flex;
+    -webkit-app-region: no-drag;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 24px;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 6;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    width: 130px;
+    border: 1px solid rgba(140, 140, 140, 0.4);
+}
+
+.dropdown-content .menu-buttons {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 4px 10px;
+}
+
+.menu-buttons {
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 12px;
+    background-color: #fff;
+    font-family: "Segoe UI";
+    transition: .15s;
+    color: #333;
+}
+
+.menu-buttons:hover {
+    background-color: #3c6e71;
+    color: #fff;
+}
+
+.dropdown-content label {
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 12px;
+    background-color: #fff;
+    font-family: "Segoe UI";
+    transition: .15s;
+    color: #333;
+}
+
+/* Submenu */
+
+.container-submenu {
+    position: relative;
+    display: block;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 127px;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.show-theme:hover .submenu {
+    display: block;
+    width: 130px;
+    border: 1px solid rgba(140, 140, 140, 0.4);
+}
+
+/* ========================== */
+input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+}
+
+.submenu label {
+    display: inline-block;
+    width: 100%;
+    font-size: 10pt;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.submenu input[type="radio"]:checked+label {
+    background-color: var(--main-color);
+    border-color: var(--main-foreground);
+    color: var(--main-background);
+}
+
+.submenu input[type="radio"]:hover+label {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+#control-window {
+    display: flex;
+    flex: 1;
+    justify-content: right;
+}
+
+.control-buttons {
+    width: 30px;
+    background-color: #fff;
+    transition: .15s;
+    -webkit-app-region: no-drag;
+}
+
+.menuWindow,
+.minimize,
+.maximize,
+.closeWindow {
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+.menuWindow:hover,
+.minimize:hover,
+.maximize:hover,
+.closeWindow:hover {
+    background-color: #3c6e71;
+}
+
+/* =====================
+    Temporary boxes
+   ===================== */
+
+#fileSaved,
+#addedEntry,
+#removedEntry {
+    position: relative;
+}
+
+.successfully-saved,
+.successfully-added,
+.successfully-removed {
+    /* display: none; */
+    position: absolute;
+    color: #1B7C18;
+    border-radius: 5px;
+    border: 2px solid #1B7C18;
+    padding: 12px 16px;
+    font-size: 13pt;
+    top: 350px;
+    left: 400px;
+    background: #D6F8DD;
+    z-index: 4;
+    width: 30%;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.3)
+}
+
+.fa-circle-check,
+.fa-circle-exclamation {
+    font-size: 17pt;
+}
+
+/* Added Entry */
+
+.successfully-added {
+    background: var(--darkTheme-main-background);
+    border: 2px solid #7f7;
+    color: #7f7;
+    z-index: 3;
+}
+
+.successfully-removed {
+    background: #a66;
+    border: 2px solid #744;
+    color: #fff;
+    z-index: 5;
+}

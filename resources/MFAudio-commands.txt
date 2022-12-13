@@ -1,0 +1,13 @@
+﻿Valid command line options:
+
+/IFnnnnn		Input frequency
+/ICn			Input channels
+/IIxxxx			Input interleave (hex)
+/IHxxxx			Input headerskip (hex)
+/OTtttt			Output type (WAVU, VAGC,
+	 			SS2U, SS2C, RAWU, RAWC)
+/OFnnnnn		Output frequency
+/OCn			Output channels
+/OIxxxx			Output interleave (hex)
+"InputFile"		Input file to play/convert
+"OutputFile"	Output file to convert to

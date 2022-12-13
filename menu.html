@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/menu.css">
+  <!-- !! IMPORTANT !! -->
+  <!-- Content-Security-Policy no longer required. Will show warning in devtools. Can be ignored -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline'"> -->
+  <title>God Hand Tools</title>
+</head>
+
+<body>
+
+  <nav id="menu-container">
+    <div id="control-window">
+      <div id="logo-container">
+        <!-- <img width="25px" src="./icons/icon.ico" title="Thank you for using this toolset!"> -->
+        <span id="credits">Made with <span style="color: #a2a;">❤</span> by </span>
+        <img title="HardRain" id="logo" width="25px" src="./images/hr-circle.png"
+          alt="Missing image, lmao. But it is HardRain.">
+      </div>
+      <button title="Minimize" id="minimize" class="control-buttons minimize"><img src="./images/minimize.png"></button>
+      <button title="Maximize" id="maximize" class="control-buttons maximize"><img
+          src="./images/expand-window.png"></button>
+      <button title="Quit" id="closeWindow" class="control-buttons closeWindow"><img
+          src="./images/close-window.png"></button>
+    </div>
+  </nav>
+  <header>
+    <h2>resident evil $ toolset</h2>
+    <p>A collection of tools for modding Resident Evil 4 PS2 and PC 2007 versions.</p>
+    <p>Version 1.4.0</p>
+  </header>
+  <section>
+    <div class="container">
+      <div id="ita-card" class="container-cards"
+        title="With this tool you can add any pickable items through the game, edit their quantity, aura color and many more...">
+        <h4>ITA Tool</h4>
+        <p>Want to edit items in the game? Click here</p>
+      </div>
+      <div id="ets-card" class="container-cards"
+        title="ETS files instances interactive objects inside the game, and with this tool you can change their position, rotation and etc...">
+        <h4>ETS Tool</h4>
+        <p>Want to modify interactive objects positions in the game? Click here</p>
+      </div>
+      <div id="smd-card" class="container-cards"
+        title="Here you can manipulate every 3D model scattered around the rooms, change their texture, scale them up, hide them and etc...">
+        <h4>SMD Tool v1</h4>
+        <p>Wanna edit room 3D models? Click here</p>
+      </div>
+      <div id="aev-card" class="container-cards"
+        title="The AEV files controls almost all events that occurs the room, things like door teleport, message triggers, cutscene triggers, damage events and many more...">
+        <h4>AEV Tool</h4>
+        <p>Looking for editing events? Click here</p>
+      </div>
+      <div id="etm-card" class="container-cards"
+        title="ETM files are the complement for ETS, with this tool you can import which interactive model and textures should appear in the room.">
+        <h4>ETM Tool</h4>
+        <p>Here you can add 3D models for interactive objects</p>
+      </div>
+      <div id="snd-card" class="container-cards"
+        title="Sounds in PS2 version are mostly compressed in a .SND file, here you can export them all and import back to the game.">
+        <h4>SND Tool (PS2 only)</h4>
+        <p>Want to try changing some sounds? Click here</p>
+      </div>
+      <div id="itm-card" class="container-cards coming-soon">
+        <h4>ITM Tool</h4>
+        <p>Click here to add 3D models for items in the rooms</p>
+      </div>
+      <div id="specials-card" class="container-cards coming-soon">
+        <h4>Special Tools</h4>
+        <p>Various kind of tools...</p>
+      </div>
+      <div id="bin-card" class="container-cards coming-soon">
+        <h4>BIN Tool</h4>
+        <p>Under research</p>
+      </div>
+      <div id="mdt-card" class="container-cards coming-soon">
+        <h4>MDT Tool</h4>
+        <p>Want to edit text messages? Click here</p>
+      </div>
+      <div id="lit-card" class="container-cards coming-soon">
+        <h4>LIT Tool</h4>
+        <p>What about some Lights/Illuminations editing? Click here</p>
+      </div>
+    </div>
+  </section>
+  <script>
+    require('./js/menu.js');
+  </script>
+</body>
+
+</html>

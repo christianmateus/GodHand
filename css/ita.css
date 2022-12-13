@@ -1,0 +1,264 @@
+* {
+    font-family: Verdana;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cores da ferramenta */
+:root {
+    --main-color: #1c4e51;
+    --purple: #1c4e51;
+    --lightpurple: #3c6e71;
+    --silver: #fff;
+    --darken: #353535;
+}
+
+body {
+    background-color: var(--darken);
+
+}
+
+.hide {
+    display: none;
+    transition: .5s;
+}
+
+/* ===================== 
+    Conteúdo superior
+   ===================== */
+
+#campo-superior {
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 100%;
+    height: 65px;
+    top: 25px;
+    background-color: var(--purple);
+    box-shadow: 0px 3px 6px 2px rgba(0, 0, 0, 0.4);
+    font-size: 8pt;
+    color: #fff;
+    align-items: center;
+    z-index: 2;
+}
+
+.inner-box {
+    flex: 1;
+    height: 100%;
+    margin: 5px;
+}
+
+.inner-box label {
+    margin-right: 10px;
+}
+
+.inner-box.file-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inner-box.file-info div {
+    display: flex;
+    width: 49.99%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.inner-box.file-info div:nth-child(1) {
+    align-items: flex-end;
+}
+
+.inner-box.file-info div input {
+    width: 150px;
+    height: fit-content;
+    padding: 2px 0;
+    margin: 5px 5px;
+}
+
+.inner-box.file-info div label {
+    margin: 5px 5px;
+}
+
+.inner-box.total-events div {
+    text-align: center;
+    width: 80%;
+    margin: 23px 0;
+}
+
+#count {
+    width: 40px;
+    text-align: center;
+    margin-right: 30px;
+    outline: none;
+}
+
+/* ===================== 
+    Conteúdo principal
+   ===================== */
+
+table {
+    gap: 0;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+table thead {
+    background-color: var(--lightpurple);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+
+}
+
+table th {
+    background-color: var(--lightpurple);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 30px;
+    width: 65px;
+    font-size: 9pt;
+    color: #ECF0F1;
+}
+
+table tbody {
+    background-color: var(--silver);
+}
+
+table td {
+    background-color: var(--silver);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    height: 30px;
+    width: 65px;
+    font-size: 8pt;
+    text-align: center;
+    outline: none;
+}
+
+table td:focus,
+td:hover {
+    background-color: #6cbec1;
+}
+
+tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* ===================== 
+    Classes de células
+   ===================== */
+
+select:focus,
+select:hover {
+    background-color: #6cbec1;
+}
+
+.glow,
+.item-id {
+    width: 65px;
+    height: 100%;
+    background-color: var(--silver);
+    font-size: 8pt;
+    text-align: center;
+    outline: none;
+}
+
+.inside {
+    width: 75px;
+    height: 100%;
+    background-color: var(--silver);
+    font-size: 8pt;
+    text-align: center;
+    outline: none;
+}
+
+.status {
+    width: 85px;
+    height: 100%;
+    background-color: var(--silver);
+    font-size: 8pt;
+    text-align: center;
+    outline: none;
+}
+
+.random {
+    width: 65px;
+    height: 100%;
+    background-color: var(--silver);
+    font-size: 8pt;
+    text-align: center;
+    outline: none;
+}
+
+.number-sequential {
+    min-width: 35px;
+    background-color: var(--purple);
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.number-sequential:hover {
+    background-color: var(--lightpurple);
+}
+
+.quantity {
+    min-width: 65px;
+}
+
+input {
+    width: 65px;
+    height: 100%;
+    text-align: center;
+    font-size: 8pt;
+    outline: none;
+}
+
+.item-id {
+    min-width: 125px;
+}
+
+.ets-cell {
+    width: 40px;
+}
+
+.ets {
+    width: 100%;
+    min-width: 35px;
+}
+
+.item-index {
+    min-width: 45px;
+}
+
+.coordinates>input {
+    width: 85px;
+}
+
+/* =================== 
+    Depois da tabela
+   =================== */
+
+#container-add {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#add-new-item {
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 0.2px solid rgba(255, 255, 255, .4);
+    background-color: var(--purple);
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+#add-new-item:hover {
+    background-color: var(--lightpurple);
+}
+
+#add-new-item:active {
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.4);
+}

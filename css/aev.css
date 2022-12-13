@@ -1,0 +1,697 @@
+* {
+    font-family: 'Segoe UI';
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* Cores da ferramenta */
+html {
+    --main-color: #1c4e51;
+    --purple: #1c4e51;
+    --lightpurple: #3c6e71;
+    --main-background: #fff;
+    --main-foreground: #ddd;
+    --darken: #444;
+    --dark-yellow: #ECB365;
+
+    /* Dark theme */
+    --darkTheme-main-background: #041C32;
+    --darkTheme-main-foreground: #04293A;
+    --darkTheme-dark-blue: #064663;
+    --darkTheme-dark-yellow: #ECB365;
+}
+
+body {
+    background-color: var(--darkTheme-main-background);
+}
+
+/* ===================== 
+    Conteúdo superior
+   ===================== */
+#campo-superior {
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 25px;
+    width: 100%;
+    height: 65px;
+    background-color: var(--purple);
+    box-shadow: 0px 3px 6px 2px rgba(0, 0, 0, 0.4);
+    font-size: 8pt;
+    color: #fff;
+    align-items: center;
+}
+
+.inner-box {
+    flex: 1;
+    height: 100%;
+    margin: 5px;
+}
+
+.inner-box label {
+    margin-right: 10px;
+}
+
+.inner-box.file-info {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inner-box.file-info div {
+    display: flex;
+    width: 49.99%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.inner-box.file-info div:nth-child(1) {
+    align-items: flex-end;
+}
+
+.inner-box.file-info div input {
+    width: 150px;
+    margin: 5px 5px;
+}
+
+.inner-box.file-info div label {
+    margin: 5px 5px;
+}
+
+.inner-box.total-events div {
+    text-align: center;
+    width: 80%;
+    margin: 23px 0;
+}
+
+#count {
+    width: 40px;
+    text-align: center;
+    margin-right: 30px;
+    outline: none;
+}
+
+.event-changer {
+    margin: auto;
+}
+
+.event-changer div {
+    display: flex;
+    width: 100%;
+    height: 49.999%;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-changer input {
+    background-color: #ddd;
+    width: 38px;
+    text-align: center;
+    cursor: default;
+    user-select: none;
+}
+
+.event-changer button:nth-child(1) {
+    margin-right: 10px;
+}
+
+.event-changer i {
+    color: #333;
+}
+
+/* ===================== 
+    Definições gerais
+   ===================== */
+.win7-btn {
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    width: 30px;
+    height: 30px;
+    background: #f2f2f2;
+    background: linear-gradient(to bottom, #f2f2f2 0%, #ebebeb 42%, #dddddd 47%, #cfcfcf 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#f2f2f2', endColorstr='#cfcfcf', GradientType=0);
+    transition: all 1s ease-in-out;
+    border: 1px solid #707070;
+}
+
+.win7-btn:hover,
+.win7-btn:focus {
+    outline: 0;
+    background: #eaf6fd;
+    background: linear-gradient(to bottom, #eaf6fd 0%, #d9f0fc 42%, #bee6fd 47%, #bce5fc 58%, #a7d9f5 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#eaf6fd', endColorstr='#a7d9f5', GradientType=0);
+    border: 1px solid #3C7FB1;
+    box-shadow: 0 0 3px #A7D9F5;
+}
+
+.win7-btn:active {
+    box-shadow: inset 0 -1px 6px rgba(0, 0, 0, 0.4), inset 0 -0.7em #BEE6FD, 0 0 3px #A7D9F5;
+}
+
+.container-titles {
+    display: flex;
+    background-color: #eee;
+    height: 40px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+}
+
+h5 {
+    font-family: sans-serif;
+    font-size: 12pt;
+    color: #444;
+    font-weight: bold;
+    text-align: center;
+}
+
+h5.noMoreParameters {
+    font-style: italic;
+}
+
+hr {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: 4px 2px;
+}
+
+select:hover {
+    background-color: #eee;
+}
+
+option:checked {
+    background-color: #ECB365;
+    color: #fff
+}
+
+fieldset {
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
+    border: 1px solid var(--main-background);
+    border-radius: 2px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+fieldset:hover {
+    border: 1px solid var(--darkTheme-dark-yellow);
+
+}
+
+legend {
+    color: var(--darkTheme-dark-yellow);
+    text-align: left;
+    font-family: sans-serif;
+    font-size: 10pt;
+    font-weight: 400;
+}
+
+fieldset input {
+    font-family: Verdana;
+    text-align: center;
+    height: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    font-size: 8pt;
+}
+
+fieldset label {
+    font-size: 9pt;
+    color: #fff;
+    user-select: none;
+    outline: none;
+}
+
+fieldset input:focus {
+    border: 1px solid rgba(0, 0, 0, 1);
+    outline: none;
+}
+
+main {
+    display: flex;
+    height: 100%;
+}
+
+/* ==============
+   LEFT SIDE 
+   ============== */
+
+.container-main-config,
+.container-event-config {
+    background-color: var(--darkTheme-main-background);
+    padding: 20px;
+    width: 49.999%;
+}
+
+.container-main-config {
+    padding-right: 10px;
+}
+
+.container-fieldset {
+    margin-bottom: 2px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background-color: var(--purple);
+}
+
+#eventId {
+    font-size: 10pt;
+    margin: 10px 0;
+    margin-right: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.index {
+    height: 20px;
+    width: 50px;
+}
+
+.unknown-data {
+    width: 50px;
+    margin-right: 5px;
+}
+
+.additional-data .tooltip {
+    width: 20px;
+    text-align: center;
+}
+
+.fieldset-coordinates {
+    display: flex;
+}
+
+.fieldset-coordinates input {
+    width: 90px;
+}
+
+.coordinates-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.coordinates-box label {
+    margin: 5px;
+    text-align: left;
+}
+
+.coordinates-box input {
+    margin-bottom: 10px;
+}
+
+.lower-limit {
+    margin-right: 30px;
+}
+
+#lower-limit {
+    width: 100px;
+}
+
+#higher-limit {
+    width: 100px;
+}
+
+/* ==============
+   RIGHT SIDE 
+   ============== */
+
+.container-event-config {
+    padding-left: 0;
+}
+
+.fieldset-definition {
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.input-definition {
+    width: 15% !important;
+    text-align: center;
+    margin-right: 5px;
+}
+
+/* EVENT TYPE 1 */
+
+.room-select {
+    margin: 10px 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.fieldset-teleport {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+}
+
+.fieldset-teleport div {
+    width: 49.99%;
+}
+
+.fieldset-teleport input {
+    width: 100px;
+    margin: 10px;
+}
+
+.container-room-image {
+    width: 155px;
+    margin: auto;
+}
+
+.container-room-image img {
+    width: 150px;
+    height: 77px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+    transition: .3s;
+}
+
+.container-room-image img:active {
+    transform: scale(1.5);
+}
+
+/* EVENT TYPE 2 */
+
+.fieldset-cutscene {
+    padding: 10px;
+}
+
+.fieldset-cutscene input {
+    width: 60px;
+    margin-right: 20px;
+}
+
+/* EVENT TYPE 4 */
+
+
+/* EVENT TYPE 5 */
+
+.fieldset-message-parameters {
+    text-align: center;
+}
+
+.fieldset-message-parameters label {
+    margin: 10px 10px;
+}
+
+.fieldset-message-parameters input {
+    margin: 10px auto;
+}
+
+.fieldset-message-parameters input:first {
+    margin-top: 0;
+}
+
+input#sound-offset {
+    margin-left: 12px;
+}
+
+/* Event Type 10 - Ladder Climb */
+
+.fieldset-ladder-camera-parameters .ladder-divs {
+    display: block;
+    width: 49.999%;
+    text-align: center;
+}
+
+.fieldset-ladder-camera-parameters .ladder-divs .tooltip {
+    transform: translateX(-15px);
+}
+
+.fieldset-ladder-camera-parameters label:nth-child(2) {
+    position: relative;
+    left: -14px;
+}
+
+.fieldset-ladder-camera-parameters input {
+    text-align: center;
+    width: 60px;
+}
+
+/* TOOLTIP POPUP */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    padding: 2px 4px;
+    font-size: 10pt;
+    border-radius: 10px;
+    margin-left: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--main-color);
+    cursor: default;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #333;
+    color: var(--main-background);
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -90px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.tooltiptext-left {
+    visibility: hidden;
+    width: 220px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -110px;
+    right: 110%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip .tooltiptext-left::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+.tooltip:hover .tooltiptext-left {
+    visibility: visible;
+}
+
+/* Event 0A - Damage */
+
+.fieldset-damage-event {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.fieldset-damage-event .input-damage-event {
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50% !important;
+}
+
+.fieldset-damage-event .tooltiptext-left {
+    width: 300px;
+    top: -103px;
+}
+
+/* Event 0B - Collilsion */
+
+.type11 {
+    text-align: center;
+}
+
+.tooltip-collision-event {
+    margin: 10px 0;
+    width: 8%;
+}
+
+.type11 .tooltiptext-left {
+    width: 300px;
+    top: -122px;
+}
+
+/* Event 10 - Ladder Climb */
+
+.fieldset-ladder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.fieldset-ladder div {
+    width: 45%;
+    margin: 2px;
+    justify-content: center;
+    align-items: center;
+}
+
+.fieldset-ladder .tooltip,
+.fieldset-teleport .tooltip,
+.fieldset-damage-event .tooltip {
+    text-align: center;
+    width: 20px;
+}
+
+.input-ladder {
+    display: flex;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 60% !important;
+}
+
+#ladder-steps {
+    width: 40% !important;
+}
+
+.fieldset-ladder-camera-parameters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.fieldset-ladder-camera-parameters div {
+    width: 49%;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.fieldset-ladder-camera-parameters div:nth-child(3) {
+    text-align: center;
+}
+
+.fieldset-ladder-camera-parameters .tooltip {
+    width: 10%;
+}
+
+.fieldset-ladder-camera-parameters .input-ladder-camera {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Event 11 - Item Dependent */
+
+#item-dependent-id {
+    width: 25% !important;
+}
+
+.fieldset-item-dependencies .tooltip {
+    width: 20px;
+    text-align: center;
+}
+
+.fieldset-object object {
+    color: #fff;
+    background-color: #ccc;
+}
+
+/* Event 12 - HIDE Event */
+
+.fieldset-hide-event .input-hide-event {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100px;
+}
+
+.fieldset-hide-event .tooltip {
+    width: 20px;
+    text-align: center;
+}
+
+/* Event 13 - Grapple Gun */
+
+.fieldset-grapple-gun .input-grapple-gun,
+.fieldset-grapple-gun .input-grapple-destination {
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100px;
+}
+
+.fieldset-grapple-gun .tooltip {
+    width: 20px;
+    text-align: center;
+}
+
+/* =================== 
+    Depois da tabela
+   =================== */
+
+#container-add {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#add-new-item {
+    padding: 3px 10px;
+    border-radius: 5px;
+    border: 0.2px solid rgba(255, 255, 255, .4);
+    background-color: var(--purple);
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+#add-new-item:hover {
+    background-color: var(--lightpurple);
+}
+
+#add-new-item:active {
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+.hide {
+    display: none;
+    transition: .5s;
+}

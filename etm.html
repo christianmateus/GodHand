@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/etm.css">
+   <link rel="stylesheet" href="css/navbar.css">
+   <link rel="stylesheet" href="css/tooltip.css">
+   <!-- FONT AWESOME -->
+   <link rel="stylesheet" href="./css/all.min.css">
+   <title>ETM Tool</title>
+</head>
+
+<body>
+   <div class="hide container-hide" id="fileSaved">
+      <span class="successfully-saved">
+         <i class="fa-regular fa-circle-check"></i>&nbsp;
+         File saved successfully!</span>
+   </div>
+   <div class="hide infoBox container-hide" id="infoBox">
+      <span class="successfully-removed">
+         <i class="fa-solid fa-circle-exclamation"></i>&nbsp; Event deleted!</span>
+   </div>
+   <div class="download-success">
+      <p></p>
+   </div>
+   <div class="obj-image">
+      <img src="" alt="Image not present, to be updated yet.">
+   </div>
+   <nav id="menu-container">
+      <div class="dropdown">
+         <button class="menu-buttons" id="file">File</button>
+         <div class="dropdown-content">
+            <button id="openETMfile" class="menu-buttons"><img src="images/open.png"> Open ETM file</button>
+            <button id="closeETMfile" class="menu-buttons"><img src="images/close.png"> Close file</button>
+            <hr>
+            <button id="saveETMfile" class="menu-buttons"><img src="images/save.png"> Save ETM file</button>
+            <button id="saveETMas" class="menu-buttons"><img src="images/save-as.png"> Save as...</button>
+            <hr>
+            <button id="quitApp" class="menu-buttons">Quit</button>
+         </div>
+      </div>
+      <div class="dropdown">
+         <button class="menu-buttons" id="edit">Edit</button>
+         <div class="dropdown-content">
+            <button id="searchBtn" class="menu-buttons"><img src="images/search.png"> Scan
+               Available</button>
+            <hr>
+            <button id="copyBtn" class="menu-buttons"><img src="images/copy.png"> Copy</button>
+            <button id="pasteBtn" class="menu-buttons"><img src="images/paste.png"> Paste</button>
+            <hr>
+            <button id="undoBtn" class="menu-buttons"><img src="images/undo.png"> Undo</button>
+            <button id="redoBtn" class="menu-buttons"><img src="images/redo.png"> Redo</button>
+         </div>
+      </div>
+      <div class="dropdown">
+         <button class="menu-buttons" id="advanced">Advanced</button>
+         <div class="dropdown-content" style="width: 190px;">
+            <button id="export-all" class="menu-buttons"><img src="images/export_all.png"> Export
+               all</button>
+            <button id="export-all-subfolders" class="menu-buttons"><img src="images/export_all.png"> Export
+               all with
+               subfolders</button>
+            <hr>
+            <button id="downloadBtn" class="menu-buttons"><img src="images/download.png"> Download
+               objects</button>
+         </div>
+      </div>
+      <div id="control-window">
+         <button title="Main menu" id="menuWindow" class="control-buttons menuWindow"><img
+               src="./images/main-menu.png"></button>
+         <button title="Minimize" id="minimize" class="control-buttons minimize"><img
+               src="./images/minimize.png"></button>
+         <button title="Maximize" id="maximize" class="control-buttons maximize"><img
+               src="./images/expand-window.png"></button>
+         <button title="Quit" id="closeWindow" class="control-buttons closeWindow"><img
+               src="./images/close-window.png"></button>
+      </div>
+   </nav>
+   <div id="campo-superior">
+      <!-- BOX 1 -->
+      <div class="inner-box file-info">
+         <div>
+            <label for="header-filename">File name:</label>
+            <label for="header-filesize">File size:</label>
+         </div>
+         <div>
+            <input id="header-filename" type="text" readonly value="">
+            <input id="header-filesize" type="text" readonly value="">
+         </div>
+      </div>
+      <!-- BOX 2 -->
+      <div class="inner-box total-events">
+         <div>
+            <label for="count">Total Files:</label>
+            <input id="count" type="number" readonly value="">
+         </div>
+      </div>
+      <!-- BOX 3 -->
+      <div class="inner-box">
+      </div>
+   </div>
+   <!-- PROGRAM DATA STARTS -->
+   <main id="main">
+      <header>
+         <h5>ETM Objects</h5>
+      </header>
+      <section>
+         <table>
+            <thead>
+               <tr>
+                  <th id="object-number">N°</th>
+                  <th id="raw-name">Object Name</th>
+                  <th id="object-size">Size</th>
+                  <th id="object-type">Type</th>
+                  <th id="object-available">Available</th>
+                  <th colspan="4">Options</th>
+                  <!-- <th>Notes</th> -->
+               </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+         </table>
+         <div class="modal">
+            <div class="modal-content">
+               <span class="close-button">×</span>
+               <h4>Download object</h4>
+               <hr>
+               <small style="color:#fff; font-size: 12px;">Note: you must import all files for the
+                  object to
+                  appear</small><br>
+               <select id="download-select">
+                  <option class="object-list" value="0">et00 - Window</option>
+                  <option class="object-list" value="1">et01 - Small Box</option>
+                  <option class="object-list" value="2">et02 - Large Box</option>
+                  <option class="object-list" value="3">et03 - Wooden Door 1</option>
+                  <option class="object-list" value="4">et04 - Movable Drawer</option>
+                  <option class="object-list" value="5">et05 - Bookshelf</option>
+                  <option class="object-list" value="6">et06 - Ladder (Small)</option>
+                  <option class="object-list" value="7">et07 - Wooden Barricade</option>
+                  <option class="object-list" value="8">et08 - Ladder (Big)</option>
+                  <option class="object-list" value="9">et09 - Wooden Gate</option>
+                  <option class="object-list" value="10">et0A - Lantern w/ chains</option>
+                  <option class="object-list" value="11">et0B - Lantern (Ashley)</option>
+                  <option class="object-list" disabled value="12">et0C - Unknown</option>
+                  <option class="object-list" value="13">et0D - Rusted Metal Door</option>
+                  <option class="object-list" value="14">et0E - Lever</option>
+                  <option class="object-list" value="15">et0F - No-Knob Gate</option>
+                  <option class="object-list" value="16">et10 - Lantern</option>
+                  <option class="object-list" value="17">et11 - Barrel</option>
+                  <option class="object-list" value="18">et12 - Explosive Barrel</option>
+                  <option class="object-list" value="19">et13 - Wooden Door 2</option>
+                  <option class="object-list" value="20">et14 - Torch (Top part)</option>
+                  <option class="object-list" value="21">et15 - Large Movable Box</option>
+                  <option class="object-list" value="22">et16 - Metal Door 1</option>
+                  <option class="object-list" value="23">et17 - Metal Door 2</option>
+                  <option class="object-list" value="24">et18 - Castle Door 1</option>
+                  <option class="object-list" value="25">et19 - Torch (Top part)</option>
+                  <option class="object-list" value="26">et1A - Medalion</option>
+                  <option class="object-list" value="27">et1B - Iron Gate</option>
+                  <option class="object-list" disabled value="28">et1C - Unknown</option>
+                  <option class="object-list" value="29">et1D - Big Window</option>
+                  <option class="object-list" value="30">et1E - Barrel (laid down)</option>
+                  <option class="object-list" value="31">et1F - Bird Nest</option>
+                  <option class="object-list" value="32">et20 - Castle Door 2</option>
+                  <option class="object-list" value="33">et21 - Castle Door 3</option>
+                  <option class="object-list" value="34">et22 - Wooden Door 3</option>
+                  <option class="object-list" value="35">et23 - Cell Gate</option>
+                  <option class="object-list" value="36">et24 - Dungeon Metal Door</option>
+                  <option class="object-list" value="37">et25 - Glass (bookshelf)</option>
+                  <option class="object-list" value="38">et26 - Metal Gate</option>
+                  <option class="object-list" value="39">et27 - Big Wooden Door</option>
+                  <option class="object-list" disabled value="40"><i>not used</i></option>
+                  <option class="object-list" value="41">et29 - Glass</option>
+                  <option class="object-list" value="42">et2A - Metal Door 3</option>
+                  <option class="object-list" value="43">et2B - Metal Door 4</option>
+                  <option class="object-list" value="44">et2C - Window</option>
+                  <option class="object-list" value="45">et2D - Explosive Barrel</option>
+                  <option class="object-list" value="46">et2E - Small Vase</option>
+                  <option class="object-list" value="47">et2F - Large Vase</option>
+                  <option class="object-list" value="48">et30 - Knight Statue</option>
+                  <option class="object-list" value="49">et31 - Cell Door</option>
+                  <option class="object-list" value="50">et32 - Door with Insignia</option>
+                  <option class="object-list" value="51">et33 - Metal Door 5</option>
+                  <option class="object-list" value="52">et34 - Metal Door 6</option>
+                  <option class="object-list" value="53">et35 - Window</option>
+                  <option class="object-list" value="54">et36 - Unknown</option>
+                  <option class="object-list" value="55">et37 - Cell Gate 2</option>
+                  <option class="object-list" value="56">et38 - Unknown</option>
+                  <option class="object-list" value="57">et39 - Prison Door</option>
+                  <option class="object-list" value="58">et3A - Blue Gate</option>
+                  <option class="object-list" value="59">et3B - Castle Door 3</option>
+                  <option class="object-list" value="60">et3C - Cylinder Tank</option>
+                  <option class="object-list" value="61">et3D - Castle Door 4</option>
+                  <option class="object-list" value="62">et3E - Metal Door 7</option>
+                  <option class="object-list" value="63">et3F - Castle Door 5</option>
+                  <option class="object-list" value="64">et40 - Curved Wooden Door</option>
+                  <option class="object-list" value="65">et41 - White Metal Door</option>
+                  <option class="object-list" value="66">et42 - Piece of Wood</option>
+                  <option class="object-list" value="67">et43 - Modern Door</option>
+                  <option class="object-list" value="68">et44 - Piece of Wood</option>
+                  <option class="object-list" value="69">et45 - Garden Gate</option>
+                  <option class="object-list" value="70">et46 - Door w/ Glass</option>
+                  <option class="object-list" value="71">et47 - Island Gate</option>
+                  <option class="object-list" value="72">et48 - Glass</option>
+                  <option class="object-list" value="73">et49 - Island Door 1</option>
+                  <option class="object-list" value="74">et4A - Window</option>
+                  <option class="object-list" value="75">et4B - Laboratory Door</option>
+                  <option class="object-list" value="76">et4C - U3 gates</option>
+                  <option class="object-list" value="77">et4D - Island Door 2</option>
+                  <option class="object-list" value="78">et4E - Keycard Door</option>
+                  <option class="object-list" value="79">et4F - Laboratory Door</option>
+                  <option class="object-list" value="80">et50 - Laboratory Window</option>
+                  <option class="object-list" value="81">et51 - Laboratory Glass</option>
+                  <option class="object-list" value="82">et52 - Laboratory Cylinder S</option>
+                  <option class="object-list" value="83">et53 - Laboratory Cylinder L</option>
+                  <option class="object-list" value="84">et54 - Window</option>
+                  <option class="object-list" value="85">et55 - Window</option>
+                  <option class="object-list" value="86">et56 - Glass</option>
+                  <option class="object-list" value="87">et57 - Glass</option>
+                  <option class="object-list" value="88">et58 - Window</option>
+                  <option class="object-list" value="89">et59 - Red Iron Door</option>
+                  <option class="object-list" value="90">et5A - Window</option>
+                  <option class="object-list" value="91">et5B - Unknown</option>
+                  <option class="object-list" value="92">et5C - Unknown</option>
+                  <option class="object-list" value="93">et5D - Small Window</option>
+                  <option class="object-list" value="94">et5E - Small Window</option>
+                  <option class="object-list" value="95">et5F - Small Window</option>
+                  <option class="object-list" value="96">et60 - Small Window</option>
+                  <option class="object-list" value="97">et61 - Automatic Door</option>
+                  <option class="object-list" value="98">et62 - Cell Door</option>
+                  <option class="object-list" value="99">et63 - Island Metal Door</option>
+                  <option class="object-list" value="100">et64 - Glass</option>
+                  <option class="object-list" value="101">et65 - Glass</option>
+                  <option class="object-list" value="102">et66 - Dragon Statue</option>
+                  <option class="object-list" value="103">et67 - Old Gate</option>
+                  <option class="object-list" value="104">et68 - Barn Gate (left)</option>
+                  <option class="object-list" value="105">et69 - Barn Gate (right)</option>
+               </select>
+               <fieldset id="fieldset-files">
+                  <legend>Files available</legend>
+                  <div class="et00 file-list">
+                     <span class="span-file-names">et0000.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et00.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0000.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0001.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et01 file-list">
+                     <span class="span-file-names">et01.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0100.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et02 file-list">
+                     <span class="span-file-names">et02.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0200.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et03 file-list">
+                     <span class="span-file-names">et03.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0300.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et04 file-list">
+                     <span class="span-file-names">et04.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0400.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et05 file-list">
+                     <span class="span-file-names">et05.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0500.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et06 file-list">
+                     <span class="span-file-names">et06.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0600.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0600.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06000.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06001.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06002.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06003.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060000.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060010.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060020.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060030.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060031.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00017.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00018.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00019.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00020.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00021.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00024.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00025.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et07 file-list">
+                     <span class="span-file-names">et07.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0700.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0700.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0701.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0701.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et08 file-list">
+                     <span class="span-file-names">et08.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0800.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0800.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06000.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06001.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06002.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et06003.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060000.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060010.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060020.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060030.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et060031.seq</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00017.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00018.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00019.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00020.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00021.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00024.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00025.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et09 file-list">
+                     <span class="span-file-names">et09.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0900.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0900.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et0A file-list">
+                     <span class="span-file-names">et0A.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0A00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0A00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et0B file-list">
+                     <span class="span-file-names">et0B.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0B00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et0D file-list">
+                     <span class="span-file-names">et0D.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0D00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0D00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et0E file-list">
+                     <span class="span-file-names">et0E00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0E00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et0F file-list">
+                     <span class="span-file-names">et0F.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0F00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et0F00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et10 file-list">
+                     <span class="span-file-names">et10.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1000.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et11 file-list">
+                     <span class="span-file-names">et11.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1100.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et12 file-list">
+                     <span class="span-file-names">et12.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1200.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et13 file-list">
+                     <span class="span-file-names">et13.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1300.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et15 file-list">
+                     <span class="span-file-names">et15.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1500.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1500.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et16 file-list">
+                     <span class="span-file-names">et16.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1600.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1600.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et17 file-list">
+                     <span class="span-file-names">et17.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1700.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1700.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et1A file-list">
+                     <span class="span-file-names">et1A.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1A00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1A00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et1B file-list">
+                     <span class="span-file-names">et1B00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1B00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et1D file-list">
+                     <span class="span-file-names">et1D.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1D00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1D00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1D01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et1E file-list">
+                     <span class="span-file-names">et1E00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et1F file-list">
+                     <span class="span-file-names">et1F.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1F00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et1F00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et21 file-list">
+                     <span class="span-file-names">et21.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2100.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2100.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et22 file-list">
+                     <span class="span-file-names">et22.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2200.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et23 file-list">
+                     <span class="span-file-names">et23.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2300.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2300.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et24 file-list">
+                     <span class="span-file-names">et24.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2400.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2400.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et25 file-list">
+                     <span class="span-file-names">et25.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2500.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2500.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et26 file-list">
+                     <span class="span-file-names">et2600.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2600.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et27 file-list">
+                     <span class="span-file-names">et27.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2700.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2700.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et29 file-list">
+                     <span class="span-file-names">et29.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2900.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2900.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et2B file-list">
+                     <span class="span-file-names">et2B00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2B00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et2C file-list">
+                     <span class="span-file-names">et2C.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2C00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2C00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2C01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et2D file-list">
+                     <span class="span-file-names">et2D.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2D00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et2E file-list">
+                     <span class="span-file-names">et2E.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2E00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2E01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et2F file-list">
+                     <span class="span-file-names">et2F.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2F00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et2F01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et30 file-list">
+                     <span class="span-file-names">et30.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3000.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3000.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et31 file-list">
+                     <span class="span-file-names">et31.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3100.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3100.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et32 file-list">
+                     <span class="span-file-names">et32.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3200.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3200.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et33 file-list">
+                     <span class="span-file-names">et3300.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3300.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et34 file-list">
+                     <span class="span-file-names">et3400.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3400.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et35 file-list">
+                     <span class="span-file-names">et35.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3500.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3500.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3501.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et36 file-list">
+                     <span class="span-file-names">et36.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3600.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3600.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3601.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et37 file-list">
+                     <span class="span-file-names">et37.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3700.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3700.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et39 file-list">
+                     <span class="span-file-names">et3900.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3900.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et3A file-list">
+                     <span class="span-file-names">et3A.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3A00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3A00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et3B file-list">
+                     <span class="span-file-names">et3B00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3B00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et3C file-list">
+                     <span class="span-file-names">et3C.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3C00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et3C file-list">
+                     <span class="span-file-names">et3C.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3C00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et3D file-list">
+                     <span class="span-file-names">et3D.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3D00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3D00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et3E file-list">
+                     <span class="span-file-names">et3E00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3E00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et3F file-list">
+                     <span class="span-file-names">et3F00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et3F00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et40 file-list">
+                     <span class="span-file-names">et40.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4000.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4000.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et41 file-list">
+                     <span class="span-file-names">et4100.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4100.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et42 file-list">
+                     <span class="span-file-names">et42.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4200.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">pl00591.fcv</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et43 file-list">
+                     <span class="span-file-names">et43.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4300.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4300.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et44 file-list">
+                     <span class="span-file-names">et44.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4400.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4400.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4401.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4401.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et45 file-list">
+                     <span class="span-file-names">et4500.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4500.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et47 file-list">
+                     <span class="span-file-names">et4700.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4700.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et48 file-list">
+                     <span class="span-file-names">et48.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4800.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4800.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et49 file-list">
+                     <span class="span-file-names">et4900.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4900.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et4A file-list">
+                     <span class="span-file-names">et4A.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4A00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4A00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4A01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et4B file-list">
+                     <span class="span-file-names">et4B.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4B00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4B00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et4C file-list">
+                     <span class="span-file-names">et4C.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4C00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4C00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et4D file-list">
+                     <span class="span-file-names">et4D00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4D00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et4E file-list">
+                     <span class="span-file-names">et4E00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4E00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et4F file-list">
+                     <span class="span-file-names">et4F00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et4F00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et50 file-list">
+                     <span class="span-file-names">et50.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5000.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5000.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5001.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5001.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et51 file-list">
+                     <span class="span-file-names">et51.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5100.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5100.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5101.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5101.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et52 file-list">
+                     <span class="span-file-names">et52.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5200.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5200.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5201.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5201.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et53 file-list">
+                     <span class="span-file-names">et53.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5300.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5300.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5301.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5301.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et55 file-list">
+                     <span class="span-file-names">et55.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5500.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5500.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5501.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5501.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et56 file-list">
+                     <span class="span-file-names">et56.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5600.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5600.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5601.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5601.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et57 file-list">
+                     <span class="span-file-names">et57.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5700.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5700.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5701.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5701.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et58 file-list">
+                     <span class="span-file-names">et58.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5800.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5800.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5801.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5801.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et5A file-list">
+                     <span class="span-file-names">et5A.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5A00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5A00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5A01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5A01.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et5B file-list">
+                     <span class="span-file-names">et5B.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5B00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5B00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5B01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5B01.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et5C file-list">
+                     <span class="span-file-names">et5C.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5C00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5C00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5C01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5C01.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et5D file-list">
+                     <span class="span-file-names">et5D.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5D00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5D00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5D01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5D01.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et5E file-list">
+                     <span class="span-file-names">et5E.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5E00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5E00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5E01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5E01.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et5F file-list">
+                     <span class="span-file-names">et5F.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5F00.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5F00.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5F01.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et5F01.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et60 file-list">
+                     <span class="span-file-names">et60.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6000.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6000.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6001.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6001.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et61 file-list">
+                     <span class="span-file-names">et61.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6100.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6100.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et62 file-list">
+                     <span class="span-file-names">et6200.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6200.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et63 file-list">
+                     <span class="span-file-names">et6300.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6300.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et66 file-list">
+                     <span class="span-file-names">et66.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6600.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6600.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+                  <div class="et67 file-list">
+                     <span class="span-file-names">et67.eff</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6700.bin</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                     <span class="span-file-names">et6700.tpl</span><button title="Download"><i
+                           class="download-file-btn fa-solid fa-circle-arrow-down"></i></button><br>
+                  </div>
+               </fieldset>
+            </div>
+         </div>
+         <div class="container-add-buttons">
+            <button disabled class="win7-btn add-new-buttons"><img src="./images/import.png" id="download-btn"
+                  class="icons-inside-button">Add new with <strong>Import</strong></button>
+            <button disabled class="win7-btn add-new-buttons"><img src="./images/download.png" id="download-btn"
+                  class="icons-inside-button"><strong>Download</strong> new objects</button>
+         </div>
+      </section>
+   </main>
+   <script>
+      require('./js/etm.js'); // Used in electron
+   </script>
+</body>
+
+</html>
