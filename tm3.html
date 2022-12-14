@@ -4,7 +4,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/specials.css">
+   <link rel="stylesheet" href="css/tm3.css">
    <link rel="stylesheet" href="css/navbar.css">
    <!-- FONT AWESOME -->
    <link rel="stylesheet" href="./css/all.min.css">
@@ -17,12 +17,7 @@
          <i class="fa-regular fa-circle-check"></i>&nbsp;
          File saved successfully!</span>
    </div>
-   <div class="hide addedEntry container-hide" id="addedEntry">
-      <span class="successfully-added">
-         <i class="fa-solid fa-circle-exclamation"></i>&nbsp;
-         New event added!</span>
-   </div>
-   <div class="hide removedEntry container-hide" id="removedEntry">
+   <div class="hide infoBox container-hide" id="infoBox">
       <span class="successfully-removed">
          <i class="fa-solid fa-circle-exclamation"></i>&nbsp; Event deleted!</span>
    </div>
@@ -30,16 +25,16 @@
       <div class="dropdown">
          <button class="menu-buttons" id="file">File</button>
          <div class="dropdown-content">
-            <button id="openSpecialsfile" class="menu-buttons"><img src="images/open.png"> Open Special file</button>
-            <button id="closeSpecialsfile" class="menu-buttons"><img src="images/close.png"> Close file</button>
+            <button id="openTM3file" class="menu-buttons"><img src="images/open.png"> Open TM3 file</button>
+            <button id="closeTM3file" class="menu-buttons"><img src="images/close.png"> Close file</button>
             <hr>
-            <button id="saveSpecialsfile" class="menu-buttons"><img src="images/save.png"> Save Special file</button>
-            <button id="saveSpecialsas" class="menu-buttons"><img src="images/save-as.png"> Save as...</button>
+            <button disabled id="saveTM3file" class="menu-buttons"><img src="images/save.png"> Save TM3 file</button>
+            <button disabled id="saveTM3as" class="menu-buttons"><img src="images/save-as.png"> Save as...</button>
             <hr>
             <button id="quitApp" class="menu-buttons">Quit</button>
          </div>
       </div>
-      <div class="dropdown">
+      <!-- <div class="dropdown">
          <button class="menu-buttons" id="options">Options</button>
          <div class="dropdown-content">
             <div class="show-theme">
@@ -65,7 +60,7 @@
                </div>
             </div>
          </div>
-      </div>
+      </div> -->
       <div id="control-window">
          <button title="Main menu" id="menuWindow" class="control-buttons menuWindow"><img
                src="./images/main-menu.png"></button>
@@ -103,14 +98,14 @@
    <!-- PROGRAM DATA STARTS -->
    <main>
       <fieldset class="fieldset-main">
-         <legend>EFF TPL command panel</legend>
-         <button id="export-tpl" class="win7-btn panel-btn">Export all TPL from EFF</button><br>
-         <button id="import-tpl" class="win7-btn panel-btn">Repack TPLs to EFF</button><br>
-         <i style="color: #fff;">Not stable</i>
+         <legend>TM3 command panel</legend>
+         <button disabled id="export-tm3" class="win7-btn panel-btn">Export all images from .TM3</button><br>
+         <button disabled id="import-tm3" class="win7-btn panel-btn">Repack .TM3 file</button><br>
+         <i style="color: #fff;">Alpha version</i>
       </fieldset>
    </main>
    <script>
-      require('./js/specials.js'); // Used in electron
+      require('./js/tm3.js'); // Used in electron
    </script>
 </body>
 

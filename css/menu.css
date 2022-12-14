@@ -1,6 +1,6 @@
 @font-face {
     font-family: "RE4";
-    src: url("../fonts/re4.ttf");
+    src: url("../fonts/aachen-bold.otf");
 }
 
 @font-face {
@@ -30,8 +30,9 @@ body {
     height: 100%;
     margin: 0;
     background-attachment: fixed;
-    background-image: url("../images/texture-big.png"),
+    background-image: url("../images/main-bg.jpg"),
         linear-gradient(-25deg, #1c4e51, #123234);
+    background-size: cover;
 }
 
 /* ===================== 
@@ -142,21 +143,21 @@ header {
 h2 {
     color: #fff;
     font-weight: 100;
-    font-size: 36pt;
+    font-size: 32pt;
     font-family: "RE4";
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
     margin-top: 40px;
 }
 
 header>p {
-    color: #ccc;
+    color: #fff;
     margin-top: 10px;
     font-size: .8rem;
 }
 
 header p:nth-child(3) {
     font-size: .6rem;
-    color: #aaa;
+    color: #fff;
 }
 
 #logo-container {
@@ -203,10 +204,10 @@ header p:nth-child(3) {
     padding: 10px;
     margin-bottom: 30px;
     background-image: linear-gradient(to bottom left, rgba(100, 100, 100, 0.9), rgba(0, 0, 0, .3));
-    border-left: 6px solid #3c6e71;
+    border-left: 6px solid #eee;
     box-shadow: 2px;
     border-radius: 10px;
-    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.6);
     cursor: pointer;
     transition: .2s;
     box-sizing: border-box;
@@ -214,7 +215,7 @@ header p:nth-child(3) {
 }
 
 .container-cards:hover {
-    outline: 1px solid #3c6e71;
+    outline: 1px solid #eee;
     transform: scale(1.01);
 }
 
@@ -236,7 +237,7 @@ header p:nth-child(3) {
 }
 
 .container-cards>h4:hover {
-    border-bottom: 1px solid #3c6e71;
+    border-bottom: 1px solid #eee;
     transition: .2s;
 }
 
@@ -246,40 +247,24 @@ header p:nth-child(3) {
     font-size: .72rem;
 }
 
-#ita-card {
-    background-image: url("../images/ITA_background.png");
-    background-size: 369px 105px;
-    background-repeat: no-repeat;
+#dat-card {
+    background-color: #131;
+    background-image: url("../images/texture.png");
+    transition: .5s;
 }
 
-#ets-card {
-    background-image: url("../images/ETS_background.png");
-    background-size: 369px 105px;
-    background-repeat: no-repeat;
+#dat-card:hover {
+    background-color: #171;
 }
 
-#aev-card {
-    background-image: url("../images/AEV_background.png");
-    background-size: 369px 105px;
-    background-repeat: no-repeat;
+#tm3-card {
+    background-color: #313;
+    background-image: url("../images/texture.png");
+    transition: .5s;
 }
 
-#smd-card {
-    background-image: url("../images/SMD_background.png");
-    background-size: 369px 105px;
-    background-repeat: no-repeat;
-}
-
-#snd-card {
-    background-image: url("../images/SND_background.png");
-    background-size: 369px 105px;
-    background-repeat: no-repeat;
-}
-
-#etm-card {
-    background-image: url("../images/ETM_background.png");
-    background-size: 369px 105px;
-    background-repeat: no-repeat;
+#tm3-card:hover {
+    background-color: #717;
 }
 
 .coming-soon {
@@ -292,7 +277,3 @@ header p:nth-child(3) {
 /* =================== 
     Depois dos cards
    =================== */
-
-footer {
-    padding: 30px 0;
-}

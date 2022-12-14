@@ -89,6 +89,7 @@ nav hr {
     width: 100%;
     text-align: left;
     padding: 4px 10px;
+    cursor: pointer;
 }
 
 .menu-buttons {
@@ -99,6 +100,7 @@ nav hr {
     font-family: "Segoe UI";
     transition: .15s;
     color: #333;
+    cursor: pointer;
 }
 
 .menu-buttons:hover {
@@ -172,6 +174,7 @@ input[type="radio"] {
 .control-buttons {
     width: 30px;
     background-color: #fff;
+    cursor: pointer;
     transition: .15s;
     -webkit-app-region: no-drag;
 }

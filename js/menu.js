@@ -1,16 +1,8 @@
 const fs = require('fs');
 const { ipcRenderer } = require('electron');
 
-const ETS = document.getElementById("ets-card");
-const ITA = document.getElementById("ita-card");
-const AEV = document.getElementById("aev-card");
-const MDT = document.getElementById("mdt-card");
-const BIN = document.getElementById("bin-card");
-const SMD = document.getElementById("smd-card");
-const SND = document.getElementById("snd-card");
-const ETM = document.getElementById("etm-card");
-const ITM = document.getElementById("itm-card");
-const SPECIALS = document.getElementById("specials-card");
+const DAT = document.getElementById("dat-card");
+const TM3 = document.getElementById("tm3-card");
 
 // Window menu buttons
 const minimizeBtn = document.getElementById("minimize");
@@ -19,44 +11,12 @@ const closeWindowBtn = document.getElementById("closeWindow");
 const logo = document.getElementById("logo");
 
 // Eventos
-ETS.addEventListener("click", function () {
-    ipcRenderer.send("openETStool")
+DAT.addEventListener("click", function () {
+    ipcRenderer.send("openDATtool")
 })
 
-ITA.addEventListener("click", function () {
-    ipcRenderer.send("openITAtool")
-})
-
-AEV.addEventListener("click", function () {
-    ipcRenderer.send("openAEVtool")
-})
-
-// MDT.addEventListener("click", function () {
-//     ipcRenderer.send("openMDTtool")
-// })
-
-// BIN.addEventListener("click", function () {
-//     ipcRenderer.send("openBINtool")
-// })
-
-SMD.addEventListener("click", function () {
-    ipcRenderer.send("openSMDtool")
-})
-
-SND.addEventListener("click", function () {
-    ipcRenderer.send("openSNDtool")
-})
-
-ETM.addEventListener("click", function () {
-    ipcRenderer.send("openETMtool")
-})
-
-ITM.addEventListener("click", function () {
-    ipcRenderer.send("openITMtool")
-})
-
-SPECIALS.addEventListener("click", function () {
-    ipcRenderer.send("openSPECIALStool")
+TM3.addEventListener("click", function () {
+    ipcRenderer.send("openTM3tool")
 })
 
 // Window menu actions

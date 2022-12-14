@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="css/dat.css">
+   <link rel="stylesheet" href="css/navbar.css">
+   <!-- FONT AWESOME -->
+   <link rel="stylesheet" href="./css/all.min.css">
+   <title>Specials Tool</title>
+</head>
+
+<body>
+   <div class="hide container-hide" id="fileSaved">
+      <span class="successfully-saved">
+         <i class="fa-regular fa-circle-check"></i>&nbsp;
+         File saved successfully!</span>
+   </div>
+   <div class="hide infoBox container-hide" id="infoBox">
+      <span class="successfully-removed">
+         <i class="fa-solid fa-circle-exclamation"></i>&nbsp; Event deleted!</span>
+   </div>
+   <nav id="menu-container">
+      <div class="dropdown">
+         <button class="menu-buttons" id="file">File</button>
+         <div class="dropdown-content">
+            <button id="openDATfile" class="menu-buttons"><img src="images/open.png"> Open DAT file</button>
+            <button id="closeDATfile" class="menu-buttons"><img src="images/close.png"> Close file</button>
+            <hr>
+            <button disabled id="saveDATfile" class="menu-buttons"><img src="images/save.png"> Save DAT file</button>
+            <button disabled id="saveDATas" class="menu-buttons"><img src="images/save-as.png"> Save as...</button>
+            <hr>
+            <button id="quitApp" class="menu-buttons">Quit</button>
+         </div>
+      </div>
+      <!-- <div class="dropdown">
+         <button class="menu-buttons" id="options">Options</button>
+         <div class="dropdown-content">
+            <div class="show-theme">
+               <button class="menu-buttons"><img src="images/theme.png"> Theme ></button>
+               <div class="submenu">
+                  <input id="dark-theme" type="radio" name="theme" value="dark" class="theme-radio-btn">
+                  <label class="menu-buttons radio-label dark-theme-btn" for="dark-theme">Dark</label>
+                  <input id="white-theme" type="radio" name="theme" value="white" class="theme-radio-btn">
+                  <label class="menu-buttons radio-label white-theme-btn" for="white-theme">White</label>
+               </div>
+            </div>
+         </div>
+         <div class="dropdown-content">
+            <div class="show-theme">
+               <button class="menu-buttons"><img src="images/theme.png"> Cards ></button>
+               <div class="submenu">
+                  <input id="dark-theme" type="radio" name="theme" value="dark" class="theme-radio-btn">
+                  <label class="menu-buttons radio-label dark-theme-btn" for="dark-theme">1 per row</label>
+                  <input id="white-theme" type="radio" name="theme" value="white" class="theme-radio-btn">
+                  <label class="menu-buttons radio-label white-theme-btn" for="white-theme">2 per row</label>
+                  <input id="white-theme" type="radio" name="theme" value="white" class="theme-radio-btn">
+                  <label class="menu-buttons radio-label white-theme-btn" for="white-theme">3 per row</label>
+               </div>
+            </div>
+         </div>
+      </div> -->
+      <div id="control-window">
+         <button title="Main menu" id="menuWindow" class="control-buttons menuWindow"><img
+               src="./images/main-menu.png"></button>
+         <button title="Minimize" id="minimize" class="control-buttons minimize"><img
+               src="./images/minimize.png"></button>
+         <button title="Maximize" id="maximize" class="control-buttons maximize"><img
+               src="./images/expand-window.png"></button>
+         <button title="Quit" id="closeWindow" class="control-buttons closeWindow"><img
+               src="./images/close-window.png"></button>
+      </div>
+   </nav>
+   <div id="campo-superior">
+      <!-- BOX 1 -->
+      <div class="inner-box file-info">
+         <div>
+            <label for="header-filename">File name:</label>
+            <label for="header-filesize">File size:</label>
+         </div>
+         <div>
+            <input id="header-filename" type="text" readonly value="">
+            <input id="header-filesize" type="text" readonly value="">
+         </div>
+      </div>
+      <!-- BOX 2 -->
+      <!-- <div class="inner-box total-events">
+         <div>
+            <label for="count">Total Languages:</label>
+            <input id="count" type="text" readonly value="">
+         </div>
+      </div> -->
+      <!-- BOX 3 -->
+      <div class="inner-box">
+      </div>
+   </div>
+   <!-- PROGRAM DATA STARTS -->
+   <main>
+      <fieldset class="fieldset-main">
+         <legend>DAT command panel</legend>
+         <button disabled id="export-dat" class="win7-btn panel-btn">Export all files from .DAT</button><br>
+         <button disabled id="import-dat" class="win7-btn panel-btn">Repack .DAT file</button><br>
+         <i style="color: #fff;">Alpha version</i>
+      </fieldset>
+   </main>
+   <script>
+      require('./js/dat.js'); // Used in electron
+   </script>
+</body>
+
+</html>
